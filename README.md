@@ -9,8 +9,6 @@ The SwiftUI Slots App is a fun and straightforward slot machine game built with 
 - **Credit System:** Start with 1,000 credits and aim to increase your balance with strategic spins.
 - **Max Spin Option:** For the daring, the Max Spin option increases both stakes and potential winnings, checking for matches across multiple patterns.
 
-![Screenshot Placeholder](path/to/Screenshot.jpeg)
-
 ## How It Works
 
 1. **Spinning:** Users can choose between a standard spin, which only changes the middle row, or a Max Spin, which changes all symbols.
