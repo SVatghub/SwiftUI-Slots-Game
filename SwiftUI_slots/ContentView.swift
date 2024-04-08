@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var creds = 1000
     @State private var backgrounds =  Array(repeating: Color.white, count: 9)
     private var betAmount = 5
+    @State private var win = false
     var body: some View {
         ZStack{
             Rectangle()
@@ -37,12 +38,17 @@ struct ContentView: View {
                 }
                 .scaleEffect(2)
                 Spacer()
+                
                 Text("Credits: \(creds)")
                     .font(.subheadline)
                     .padding()
-                    .background(Color.white)
+                    .background(win ? Color.green:Color.white)
+                    .animation(.none,value: win)
                     .opacity(0.8)
                     .cornerRadius(30)
+                    .scaleEffect(win ? 1.2:1)
+                    .animation(.spring(response: 0.7, dampingFraction: 0.3),value : win)
+                
                 Spacer()
                 VStack{
                     HStack{
@@ -106,6 +112,7 @@ struct ContentView: View {
                 Spacer()
             }
         }
+        .animation(.easeIn, value: nums)
     }
     func Processbutton( _ isMax : Bool = false){
         // changing backgrounds to white
@@ -148,14 +155,17 @@ struct ContentView: View {
             matches += Procesmatches(2, 4, 6)
         }
         
+        win = false
         if(!isMax){
             if matches > 0{
+                win = true
                 creds += betAmount * 2
             }else{
                 creds -= betAmount
             }
         }else{
             if matches > 0{
+                win = true
                 creds += betAmount * 10
             }else{
                 creds -= betAmount * 5

@@ -10,12 +10,28 @@ import SwiftUI
 struct cardView: View {
     @Binding var label : String
     @Binding var cardbackground : Color
+    private let transition : AnyTransition = AnyTransition.move(edge: .bottom)
     var body: some View {
-        Image(label)
-            .resizable()
-            .aspectRatio(1,contentMode: .fit)
-            .background(cardbackground.opacity(0.5))
-            .cornerRadius(20)
+        VStack {
+            if label == "apple" {
+                Image(label)
+                .resizable()
+                .transition(transition)
+                .cornerRadius(20)
+            } else if label == "cherry" {
+                Image(label)
+                .resizable()
+                .transition(transition)
+                .cornerRadius(20)
+            }else{
+                Image(label)
+                .resizable()
+                .transition(transition)
+                .cornerRadius(20)
+            }
+        }
+        .aspectRatio(1,contentMode: .fit)
+        .background(cardbackground.opacity(0.5))
     }
 }
 
